@@ -1,0 +1,4 @@
+---
+leaflet_qgis_stack_qgis_server_data_dirs:
+  - fonts
+  - mapdata

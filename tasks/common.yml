@@ -1,0 +1,12 @@
+---
+- name: Create base dir
+  ansible.builtin.file:
+    path: "{{ leaflet_qgis_stack_base_dir }}"
+    mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
+    state: directory
+
+- name: Create data dir
+  ansible.builtin.file:
+    path: "{{ leaflet_qgis_stack_data_dir }}"
+    mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
+    state: directory

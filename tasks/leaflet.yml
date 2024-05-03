@@ -1,0 +1,14 @@
+---
+- name: Clone leaflet from GIT repo
+  ansible.builtin.git:
+    repo: "{{ leaflet_qgis_stack_leaflet_git_url }}"
+    dest: "{{ leaflet_qgis_stack_data_dir }}/leaflet"
+    force: "{{ leaflet_qgis_stack_leaflet_git_force }}"
+    accept_newhostkey: "{{ leaflet_qgis_stack_leaflet_git_accept_newhostkey }}"
+    key_file: "{{ leaflet_qgis_stack_leaflet_git_key_file | default(omit) }}"
+    single_branch: "{{ leaflet_qgis_stack_leaflet_git_single_branch }}"
+    version: "{{ leaflet_qgis_stack_leaflet_git_version }}"
+    clone: true
+    update: true
+    recursive: false
+    umask: "{{ leaflet_qgis_stack_leaflet_git_umask }}"

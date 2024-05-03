@@ -1,0 +1,16 @@
+---
+# Ansible managed
+services:
+  mapproxy:
+    image: ghcr.io/mapproxy/mapproxy/mapproxy:${MAPPROXY_TAG}
+    restart: unless-stopped
+    ports:
+      - "${MAPPROXY_IP}:${MAPPROXY_PORT}:80"
+    environment:
+      TZ: "${TZ}"
+    volumes:
+      - ./conf/mapproxy:/mapproxy/config
+      - ./conf/mapproxy/uwsgi.conf:/mapproxy/uwsgi.conf
+      - ${DATA_DIR}/mapproxy/cache:/mapproxy/config/cache_data
+    tmpfs:
+      - /mapproxy/config/cache_data/tile_locks:mode=777

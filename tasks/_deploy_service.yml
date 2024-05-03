@@ -1,0 +1,51 @@
+---
+- name: Create service dir
+  ansible.builtin.file:
+    path: "{{ leaflet_qgis_stack_base_dir }}/{{ _service_name }}"
+    mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
+    state: directory
+
+- name: Create service conf dir
+  ansible.builtin.file:
+    path: "{{ leaflet_qgis_stack_base_dir }}/{{ _service_name }}/conf/{{ _service_name }}"
+    mode: "{{ _conf_dir_mode }}"
+    state: directory
+
+- name: Create service data dir(s)
+  ansible.builtin.file:
+    path: "{{ leaflet_qgis_stack_data_dir }}/{{ _service_name }}/{{ item }}"
+    mode: "{{ _data_dir_mode }}"
+    state: directory
+  loop: "{{ _data_dirs }}"
+
+- name: Template .env
+  ansible.builtin.template:
+    src: "{{ _service_name }}/env.j2"
+    mode: "{{ leaflet_qgis_stack_docker_file_mode }}"
+    dest: "{{ leaflet_qgis_stack_base_dir }}/{{ _service_name }}/.env"
+
+- name: Copy docker-compose.yml
+  ansible.builtin.copy:
+    src: "{{ _service_name }}/docker-compose.yml"
+    mode: "{{ leaflet_qgis_stack_docker_file_mode }}"
+    dest: "{{ leaflet_qgis_stack_base_dir }}/{{ _service_name }}/docker-compose.yml"
+
+- name: Copy config
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    mode: "{{ _conf_file_mode }}"
+    dest: "{{ item.dest }}"
+  loop: "{{ _config_files }}"
+
+- name: Template config
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    mode: "{{ _conf_file_mode }}"
+    dest: "{{ item.dest }}"
+  loop: "{{ _config_templates }}"
+
+- name: Create and start services
+  community.docker.docker_compose_v2:
+    project_name: "{{ leaflet_qgis_stack_docker_compose_project_prefix }}_{{ _service_name }}"
+    project_src: "{{ leaflet_qgis_stack_base_dir }}/{{ _service_name }}"
+    state: present

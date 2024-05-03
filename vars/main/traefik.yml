@@ -1,0 +1,4 @@
+---
+leaflet_qgis_stack_traefik_data_dirs:
+  - data
+  - logs

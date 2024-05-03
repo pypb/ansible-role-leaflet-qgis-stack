@@ -1,0 +1,22 @@
+---
+# the components will live in subdirectories under here
+leaflet_qgis_stack_base_dir: "/srv/leaflet_qgis_stack/{{ leaflet_qgis_stack_docker_compose_project_prefix }}"
+leaflet_qgis_stack_data_dir: "{{ leaflet_qgis_stack_base_dir }}/data"
+
+# mode to use on created files and dirs.
+# please note that most containers run as non-root with different uid's
+leaflet_qgis_stack_default_dir_mode: '0775'
+leaflet_qgis_stack_default_file_mode: '0664'
+leaflet_qgis_stack_docker_file_mode: '0660'
+
+# set a prefix on the docker compose project names
+# useful if you want to separate dev/test/prod with different names
+leaflet_qgis_stack_docker_compose_project_prefix: "prod"
+
+leaflet_qgis_stack_timezone: UTC
+
+leaflet_qgis_stack_main_host: www.mydomain.local
+leaflet_qgis_stack_map_host_1: map1.mydomain.local
+leaflet_qgis_stack_map_host_2: map2.mydomain.local
+leaflet_qgis_stack_map_host_3: map3.mydomain.local
+leaflet_qgis_stack_map_host_4: map4.mydomain.local

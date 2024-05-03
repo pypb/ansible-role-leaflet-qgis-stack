@@ -1,0 +1,19 @@
+---
+leaflet_qgis_stack_traefik_deploy: false
+leaflet_qgis_stack_traefik_http_port: 80
+leaflet_qgis_stack_traefik_https_port: 443
+leaflet_qgis_stack_traefik_tag: v2.10
+leaflet_qgis_stack_traefik_dir_mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
+leaflet_qgis_stack_traefik_file_mode: "{{ leaflet_qgis_stack_default_file_mode }}"
+
+# these may be overridden with custom config files and/or templates
+leaflet_qgis_stack_traefik_config_files: []
+leaflet_qgis_stack_traefik_config_templates:
+  - src: traefik/conf/traefik/traefik.yml.j2
+    dest: "{{ leaflet_qgis_stack_base_dir }}/traefik/conf/traefik/traefik.yml"
+
+leaflet_qgis_stack_traefik_check_new_version: false
+leaflet_qgis_stack_traefik_send_anonymous_usage: true
+leaflet_qgis_stack_traefik_log_level: INFO
+leaflet_qgis_stack_traefik_acme_email: webmaster@mydomain.local
+leaflet_qgis_stack_traefik_sni_strict: true

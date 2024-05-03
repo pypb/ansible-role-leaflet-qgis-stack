@@ -1,0 +1,3 @@
+---
+leaflet_qgis_stack_mapproxy_data_dirs:
+  - cache

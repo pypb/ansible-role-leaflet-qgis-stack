@@ -1,0 +1,20 @@
+---
+leaflet_qgis_stack_qgis_server_deploy: false
+leaflet_qgis_stack_qgis_server_tag: 3.28
+leaflet_qgis_stack_qgis_server_dir_mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
+leaflet_qgis_stack_qgis_server_file_mode: "{{ leaflet_qgis_stack_default_file_mode }}"
+leaflet_qgis_stack_qgis_server_ip: 127.0.0.1
+leaflet_qgis_stack_qgis_server_port: 8183
+
+leaflet_qgis_stack_qgis_server_fcgi_idle_timeout: 900
+leaflet_qgis_stack_qgis_server_fcgi_io_timeout: 300
+leaflet_qgis_stack_qgis_server_fcgi_min_processes: 1
+leaflet_qgis_stack_qgis_server_fcgi_max_processes: 1
+leaflet_qgis_stack_qgis_server_locale: en_DK
+leaflet_qgis_stack_qgis_server_cache_size: 100
+leaflet_qgis_stack_qgis_server_disable_getprint: true
+leaflet_qgis_stack_qgis_server_force_readonly_layers: true
+leaflet_qgis_stack_qgis_server_ignore_bad_layers: true
+leaflet_qgis_stack_qgis_server_log_level: 1
+leaflet_qgis_stack_qgis_server_parallel_rendering: false
+leaflet_qgis_stack_qgis_server_project_cache_strategy: 'off'

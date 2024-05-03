@@ -1,0 +1,15 @@
+---
+leaflet_qgis_stack_varnish_deploy: false
+leaflet_qgis_stack_varnish_tag: 7.5-alpine
+leaflet_qgis_stack_varnish_dir_mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
+leaflet_qgis_stack_varnish_file_mode: "{{ leaflet_qgis_stack_default_file_mode }}"
+leaflet_qgis_stack_varnish_traefik_network: "{{ leaflet_qgis_stack_docker_compose_project_prefix }}_traefik_default"
+
+leaflet_qgis_stack_varnish_map_host_regex: ^map.*\\.mydomain\\.local$
+leaflet_qgis_stack_varnish_size: 64M
+
+# these may be overridden with custom config files and/or templates
+leaflet_qgis_stack_varnish_config_files: []
+leaflet_qgis_stack_varnish_config_templates:
+  - src: varnish/conf/varnish/default.vcl.j2
+    dest: "{{ leaflet_qgis_stack_base_dir }}/varnish/conf/varnish/default.vcl"

@@ -1,0 +1,96 @@
+---
+- name: Run common tasks
+  ansible.builtin.include_tasks:
+    file: common.yml
+    apply:
+      tags: common
+  tags: always
+
+- name: Deploy service traefik reverse-proxy
+  ansible.builtin.include_tasks:
+    file: _deploy_service.yml
+    apply:
+      tags: traefik
+  vars:
+    _service_name: traefik
+    _conf_dir_mode: "{{ leaflet_qgis_stack_traefik_dir_mode }}"
+    _conf_file_mode: "{{ leaflet_qgis_stack_traefik_file_mode }}"
+    _config_files: "{{ leaflet_qgis_stack_traefik_config_files }}"
+    _config_templates: "{{ leaflet_qgis_stack_traefik_config_templates }}"
+    _data_dirs: "{{ leaflet_qgis_stack_traefik_data_dirs }}"
+    _data_dir_mode: "{{ leaflet_qgis_stack_traefik_dir_mode }}"
+  tags: always
+  when: leaflet_qgis_stack_traefik_deploy
+
+- name: Deploy service varnish
+  ansible.builtin.include_tasks:
+    file: _deploy_service.yml
+    apply:
+      tags: varnish
+  vars:
+    _service_name: varnish
+    _conf_dir_mode: "{{ leaflet_qgis_stack_varnish_dir_mode }}"
+    _conf_file_mode: "{{ leaflet_qgis_stack_varnish_file_mode }}"
+    _config_files: "{{ leaflet_qgis_stack_varnish_config_files }}"
+    _config_templates: "{{ leaflet_qgis_stack_varnish_config_templates }}"
+    _data_dirs: "{{ leaflet_qgis_stack_varnish_data_dirs }}"
+    _data_dir_mode: "{{ leaflet_qgis_stack_varnish_dir_mode }}"
+  tags: always
+  when: leaflet_qgis_stack_varnish_deploy
+
+- name: Deploy service mapproxy
+  ansible.builtin.include_tasks:
+    file: _deploy_service.yml
+    apply:
+      tags: mapproxy
+  vars:
+    _service_name: mapproxy
+    _conf_dir_mode: "{{ leaflet_qgis_stack_mapproxy_dir_mode }}"
+    _conf_file_mode: "{{ leaflet_qgis_stack_mapproxy_file_mode }}"
+    _config_files: "{{ leaflet_qgis_stack_mapproxy_config_files }}"
+    _config_templates: "{{ leaflet_qgis_stack_mapproxy_config_templates }}"
+    _data_dirs: "{{ leaflet_qgis_stack_mapproxy_data_dirs }}"
+    _data_dir_mode: "{{ leaflet_qgis_stack_mapproxy_dir_mode }}"
+  tags: always
+  when: leaflet_qgis_stack_mapproxy_deploy
+
+- name: Deploy service qgis-server
+  ansible.builtin.include_tasks:
+    file: _deploy_service.yml
+    apply:
+      tags: qgis-server
+  vars:
+    _service_name: qgis-server
+    _conf_dir_mode: "{{ leaflet_qgis_stack_qgis_server_dir_mode }}"
+    _conf_file_mode: "{{ leaflet_qgis_stack_qgis_server_file_mode }}"
+    _config_files: []
+    _config_templates: []
+    _data_dirs: "{{ leaflet_qgis_stack_qgis_server_data_dirs }}"
+    _data_dir_mode: "{{ leaflet_qgis_stack_qgis_server_dir_mode }}"
+  tags: always
+  when: leaflet_qgis_stack_qgis_server_deploy
+
+- name: Deploy leaflet
+  ansible.builtin.include_tasks:
+    file: leaflet.yml
+    apply:
+      tags: leaflet
+  tags: always
+  when: leaflet_qgis_stack_leaflet_deploy
+
+- name: Deploy service nginx
+  ansible.builtin.include_tasks:
+    file: _deploy_service.yml
+    apply:
+      tags: nginx
+  vars:
+    _service_name: nginx
+    _conf_dir_mode: "{{ leaflet_qgis_stack_nginx_dir_mode }}"
+    _conf_file_mode: "{{ leaflet_qgis_stack_nginx_file_mode }}"
+    _config_files: "{{ leaflet_qgis_stack_nginx_config_files }}"
+    _config_templates: "{{ leaflet_qgis_stack_nginx_config_templates }}"
+    _data_dirs: "{{ leaflet_qgis_stack_nginx_data_dirs }}"
+    _data_dir_mode: "{{ leaflet_qgis_stack_nginx_dir_mode }}"
+  tags: always
+  when: leaflet_qgis_stack_nginx_deploy
+

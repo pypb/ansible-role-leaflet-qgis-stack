@@ -1,0 +1,18 @@
+---
+leaflet_qgis_stack_mapproxy_deploy: false
+leaflet_qgis_stack_mapproxy_tag: 2.0.2-alpine-nginx
+leaflet_qgis_stack_mapproxy_dir_mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
+leaflet_qgis_stack_mapproxy_file_mode: "{{ leaflet_qgis_stack_default_file_mode }}"
+leaflet_qgis_stack_mapproxy_ip: 127.0.0.1
+leaflet_qgis_stack_mapproxy_port: 8182
+leaflet_qgis_stack_mapproxy_grid_wm_num_levels: 17
+leaflet_qgis_stack_mapproxy_threads: 2
+leaflet_qgis_stack_mapproxy_processes: 1
+
+# these may be overridden with custom config files and/or templates
+leaflet_qgis_stack_mapproxy_config_files: []
+leaflet_qgis_stack_mapproxy_config_templates:
+  - src: mapproxy/conf/mapproxy/mapproxy.yaml.j2
+    dest: "{{ leaflet_qgis_stack_base_dir }}/mapproxy/conf/mapproxy/mapproxy.yaml"
+  - src: mapproxy/conf/mapproxy/uwsgi.conf.j2
+    dest: "{{ leaflet_qgis_stack_base_dir }}/mapproxy/conf/mapproxy/uwsgi.conf"

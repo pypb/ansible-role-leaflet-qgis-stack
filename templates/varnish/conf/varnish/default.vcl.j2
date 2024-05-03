@@ -1,0 +1,40 @@
+# {{ ansible_managed }}
+vcl 4.1;
+import dynamic;
+
+sub vcl_init {
+        new d = dynamic.director(port = "80");
+}
+
+backend default {
+    .host = "{{ leaflet_qgis_stack_nginx_ip }}";
+    .port = "{{ leaflet_qgis_stack_nginx_port }}";
+}
+
+backend mapproxy {
+    .host = "{{ leaflet_qgis_stack_mapproxy_ip }}";
+    .port = "{{ leaflet_qgis_stack_mapproxy_port }}";
+}
+
+sub vcl_backend_response {
+     set beresp.grace = 2m;
+     set beresp.keep = 48h;
+}
+
+sub vcl_recv {
+    if (req.http.host == "{{ leaflet_qgis_stack_main_host }}") {
+        set req.backend_hint = default;
+    }
+
+    if (req.http.host ~ "{{ leaflet_qgis_stack_varnish_map_host_regex }}" && req.http.referer ~ "{{ leaflet_qgis_stack_varnish_map_host_regex }}" && req.url ~ "^/tiles/[_a-zA-Z0-9]+/wm/([8-9]|1[0-6])/[0-9]+/[0-9]+.png$") {
+        set req.url = regsub(req.url, "^/tiles", "/mapproxy/tiles");
+        set req.http.host = "{{ leaflet_qgis_stack_map_host_1 }}";
+        set req.backend_hint = mapproxy;
+    }
+}
+
+sub vcl_deliver {
+    unset resp.http.Via;
+    unset resp.http.X-Varnish;
+}
+

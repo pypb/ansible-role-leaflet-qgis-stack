@@ -1,0 +1,33 @@
+---
+# {{ ansible_managed }}
+
+globals:
+  http:
+    client_timeout: 900
+  tiles:
+    expires_hours: 1
+  cache:
+    meta_size: [8, 8]
+  image:
+    formats:
+      image/png:
+        encoding_options:
+          quantizer: mediancut
+        mode: RGBA
+        transparent: true
+    paletted: false
+
+grids:
+  wm:
+    base: GLOBAL_WEBMERCATOR
+    srs: 'EPSG:3857'
+    origin: nw
+    num_levels: {{ leaflet_qgis_stack_mapproxy_grid_wm_num_levels }}
+
+services:
+  tms:
+    use_grid_names: true
+
+caches: {}
+layers: {}
+sources: {}

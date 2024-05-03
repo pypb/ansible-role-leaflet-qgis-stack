@@ -1,0 +1,23 @@
+# {{ ansible_managed }}
+server {
+    listen       8080;
+    server_name  {{ leaflet_qgis_stack_main_host }};
+    server_tokens off;
+    port_in_redirect off;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html;
+        add_header Content-Security-Policy "default-src 'self'; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' https://{{ leaflet_qgis_stack_map_host_1 }} https://{{ leaflet_qgis_stack_map_host_2 }} https://{{ leaflet_qgis_stack_map_host_3 }} https://{{ leaflet_qgis_stack_map_host_4 }} data:; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none';";
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    gzip_static on;
+    expires 5m;
+    add_header Cache-Control "public, no-transform";
+    access_log off;
+}
