@@ -6,6 +6,7 @@ leaflet_qgis_stack_varnish_file_mode: "{{ leaflet_qgis_stack_default_file_mode }
 leaflet_qgis_stack_varnish_traefik_network: "{{ leaflet_qgis_stack_docker_compose_project_prefix }}_traefik_default"
 
 leaflet_qgis_stack_varnish_map_host_regex: ^map.*\\.mydomain\\.local$
+leaflet_qgis_stack_varnish_referer_regex: ^https://.*\\.mydomain\\.local$
 leaflet_qgis_stack_varnish_size: 64M
 
 # these may be overridden with custom config files and/or templates
