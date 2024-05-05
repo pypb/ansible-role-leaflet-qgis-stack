@@ -13,6 +13,14 @@ leaflet_qgis_stack_docker_file_mode: '0660'
 # useful if you want to separate dev/test/prod with different names
 leaflet_qgis_stack_docker_compose_project_prefix: "prod"
 
+# enable this to drop logrotate scripts in /etc/logrotate.d
+# currently only affects traefik access.log
+leaflet_qgis_stack_logrotate_dir: /etc/logrotate.d
+leaflet_qgis_stack_logrotate_enabled: false
+leaflet_qgis_stack_logrotate_interval: daily
+leaflet_qgis_stack_logrotate_keep: 7
+
+# timezone will mostly affect timestamp on container log output
 leaflet_qgis_stack_timezone: UTC
 
 leaflet_qgis_stack_main_host: www.mydomain.local
@@ -20,3 +28,4 @@ leaflet_qgis_stack_map_host_1: map1.mydomain.local
 leaflet_qgis_stack_map_host_2: map2.mydomain.local
 leaflet_qgis_stack_map_host_3: map3.mydomain.local
 leaflet_qgis_stack_map_host_4: map4.mydomain.local
+

@@ -17,3 +17,8 @@ leaflet_qgis_stack_traefik_send_anonymous_usage: true
 leaflet_qgis_stack_traefik_log_level: INFO
 leaflet_qgis_stack_traefik_acme_email: webmaster@mydomain.local
 leaflet_qgis_stack_traefik_sni_strict: true
+
+leaflet_qgis_stack_traefik_access_log_path: "{{ leaflet_qgis_stack_data_dir }}/traefik/logs/access.log"
+
+# add any custom postrotate commands to this list, for example log analysis
+leaflet_qgis_stack_traefik_logrotate_postrotate_custom_commands: []

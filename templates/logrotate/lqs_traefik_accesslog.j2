@@ -1,0 +1,14 @@
+{{ leaflet_qgis_stack_traefik_access_log_path }} {
+        missingok
+        notifempty
+        sharedscripts
+        rotate {{ leaflet_qgis_stack_logrotate_keep }}
+        {{ leaflet_qgis_stack_logrotate_interval }}
+        compress
+        postrotate
+                docker kill --signal="USR1" {{ leaflet_qgis_stack_docker_compose_project_prefix }}_traefik-traefik-1
+                {% for cmd in leaflet_qgis_stack_traefik_logrotate_postrotate_custom_commands %}
+                {{ cmd }}
+                {% endfor %}
+        endscript
+}

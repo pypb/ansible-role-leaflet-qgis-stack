@@ -1,0 +1,9 @@
+---
+- name: Template logrotate.d/lqs_traefik_accesslog
+  ansible.builtin.template:
+    src: "logrotate/lqs_traefik_accesslog.j2"
+    mode: '0644'
+    dest: "{{ leaflet_qgis_stack_logrotate_dir }}/lqs_traefik_accesslog"
+  when:
+    - leaflet_qgis_stack_logrotate_enabled
+    - leaflet_qgis_stack_traefik_deploy
