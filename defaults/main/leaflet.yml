@@ -5,4 +5,4 @@ leaflet_qgis_stack_leaflet_git_version: HEAD
 leaflet_qgis_stack_leaflet_git_force: true
 leaflet_qgis_stack_leaflet_git_accept_newhostkey: true
 leaflet_qgis_stack_leaflet_git_single_branch: false
-leaflet_qgis_stack_leaflet_git_umask: '077'
+leaflet_qgis_stack_leaflet_git_umask: '002'
