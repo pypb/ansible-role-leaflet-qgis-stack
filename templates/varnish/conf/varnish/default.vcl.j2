@@ -17,8 +17,8 @@ backend mapproxy {
 }
 
 sub vcl_backend_response {
-     set beresp.grace = 2m;
-     set beresp.keep = 48h;
+     set beresp.grace = {{ leaflet_qgis_stack_varnish_grace }};
+     set beresp.keep = {{ leaflet_qgis_stack_varnish_keep }};
 }
 
 sub vcl_recv {

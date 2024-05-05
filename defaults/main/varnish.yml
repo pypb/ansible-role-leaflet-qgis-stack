@@ -8,6 +8,8 @@ leaflet_qgis_stack_varnish_traefik_network: "{{ leaflet_qgis_stack_docker_compos
 leaflet_qgis_stack_varnish_map_host_regex: ^map.*\\.mydomain\\.local$
 leaflet_qgis_stack_varnish_referer_regex: ^https://.*\\.mydomain\\.local$
 leaflet_qgis_stack_varnish_size: 64M
+leaflet_qgis_stack_varnish_grace: 2m
+leaflet_qgis_stack_varnish_keep: 0s
 
 # these may be overridden with custom config files and/or templates
 leaflet_qgis_stack_varnish_config_files: []
