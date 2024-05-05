@@ -93,4 +93,3 @@
     _data_dir_mode: "{{ leaflet_qgis_stack_nginx_dir_mode }}"
   tags: always
   when: leaflet_qgis_stack_nginx_deploy
-

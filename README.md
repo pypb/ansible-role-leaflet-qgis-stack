@@ -1,18 +1,15 @@
 # Ansible Role: leaflet-qgis-stack
 
-Sets up a web map stack using these components:
-
-- traefik reverse proxy
-- varnish http accelerator
-- nginx serving leaflet
-- mapproxy
-- qgis-server
+Set up a web map stack using Leaflet, MapProxy and QGIS Server with Traefik reverse-proxy and Varnish cache.
 
 ## Requirements
 
 Requires docker and docker compose. Podman will probably work too, but has not been tested.
 
-You will also require a QGS project file with a map and configure mapproxy to request WMS layers from qgis-server, otherwise this will be a very boring software stack.
+You will also need:
+ - A QGS project file with a map for QGIS Server
+ - MapProxy configuration to request layers using WMS from QGIS Server
+ - Optionally a seeding configuration for MapProxy
 
 ## License
 
