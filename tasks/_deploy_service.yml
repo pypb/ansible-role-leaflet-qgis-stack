@@ -36,6 +36,7 @@
     mode: "{{ _conf_file_mode }}"
     dest: "{{ item.dest }}"
   loop: "{{ _config_files }}"
+  register: result_copy
 
 - name: Template config
   ansible.builtin.template:
@@ -43,9 +44,17 @@
     mode: "{{ _conf_file_mode }}"
     dest: "{{ item.dest }}"
   loop: "{{ _config_templates }}"
+  register: result_template
 
 - name: Create and start services
   community.docker.docker_compose_v2:
     project_name: "{{ leaflet_qgis_stack_docker_compose_project_prefix }}_{{ _service_name }}"
     project_src: "{{ leaflet_qgis_stack_base_dir }}/{{ _service_name }}"
     state: present
+
+- name: Restart services
+  community.docker.docker_compose_v2:
+    project_name: "{{ leaflet_qgis_stack_docker_compose_project_prefix }}_{{ _service_name }}"
+    project_src: "{{ leaflet_qgis_stack_base_dir }}/{{ _service_name }}"
+    state: restarted
+  when: result_copy.changed or result_template.changed
