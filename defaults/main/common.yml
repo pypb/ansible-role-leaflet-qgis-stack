@@ -19,6 +19,9 @@ leaflet_qgis_stack_logrotate_dir: /etc/logrotate.d
 leaflet_qgis_stack_logrotate_enabled: false
 leaflet_qgis_stack_logrotate_interval: daily
 leaflet_qgis_stack_logrotate_keep: 7
+leaflet_qgis_stack_logrotate_user: root
+leaflet_qgis_stack_logrotate_group: root
+leaflet_qgis_stack_logrotate_mode: '0644'
 
 # timezone will mostly affect timestamp on container log output
 leaflet_qgis_stack_timezone: UTC
@@ -28,4 +31,3 @@ leaflet_qgis_stack_map_host_1: map1.mydomain.local
 leaflet_qgis_stack_map_host_2: map2.mydomain.local
 leaflet_qgis_stack_map_host_3: map3.mydomain.local
 leaflet_qgis_stack_map_host_4: map4.mydomain.local
-
