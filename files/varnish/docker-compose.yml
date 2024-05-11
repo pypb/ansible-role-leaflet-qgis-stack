@@ -16,7 +16,7 @@ services:
       - revproxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.varnish.rule=Host(`${MAIN_HOST}`) || (Host(`${MAP_HOST_1}`) || Host(`${MAP_HOST_2}`) || Host(`${MAP_HOST_3}`) || Host(`${MAP_HOST_4}`)) && Method(`GET`) && PathPrefix(`/tiles`)"
+      - "traefik.http.routers.varnish.rule=Host(`${MAIN_HOST}`) || Host(`${ALT_HOST}`) || ((Host(`${MAP_HOST_1}`) || Host(`${MAP_HOST_2}`) || Host(`${MAP_HOST_3}`) || Host(`${MAP_HOST_4}`)) && Method(`GET`) && PathPrefix(`/tiles`))"
       - "traefik.http.routers.varnish.tls=true"
       - "traefik.http.routers.varnish.tls.certresolver=letsencrypt"
       - "traefik.http.routers.varnish.middlewares=varnish"

@@ -26,6 +26,11 @@ sub vcl_recv {
         set req.backend_hint = default;
     }
 
+    if (req.http.host == "{{ leaflet_qgis_stack_alt_host }}") {
+        set req.backend_hint = default;
+        set req.http.host = "{{ leaflet_qgis_stack_main_host }}";
+    }
+
     if (req.http.host ~ "{{ leaflet_qgis_stack_varnish_map_host_regex }}" && req.http.referer ~ "{{ leaflet_qgis_stack_varnish_referer_regex }}" && req.url ~ "^/tiles/[_a-zA-Z0-9]+/wm/([8-9]|1[0-6])/[0-9]+/[0-9]+.png$") {
         set req.url = regsub(req.url, "^/tiles", "/mapproxy/tiles");
         set req.http.host = "{{ leaflet_qgis_stack_map_host_1 }}";

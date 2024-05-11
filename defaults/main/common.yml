@@ -27,6 +27,7 @@ leaflet_qgis_stack_logrotate_mode: '0644'
 leaflet_qgis_stack_timezone: UTC
 
 leaflet_qgis_stack_main_host: www.mydomain.local
+leaflet_qgis_stack_alt_host: "{{ leaflet_qgis_stack_main_host }}"
 leaflet_qgis_stack_map_host_1: map1.mydomain.local
 leaflet_qgis_stack_map_host_2: map2.mydomain.local
 leaflet_qgis_stack_map_host_3: map3.mydomain.local
