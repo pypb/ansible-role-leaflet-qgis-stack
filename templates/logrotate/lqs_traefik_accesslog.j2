@@ -5,6 +5,7 @@
         rotate {{ leaflet_qgis_stack_logrotate_keep }}
         {{ leaflet_qgis_stack_logrotate_interval }}
         compress
+        delaycompress
         create {{ leaflet_qgis_stack_logrotate_mode }} {{ leaflet_qgis_stack_logrotate_user }} {{ leaflet_qgis_stack_logrotate_group }
         postrotate
                 docker kill --signal="USR1" {{ leaflet_qgis_stack_docker_compose_project_prefix }}_traefik-traefik-1
