@@ -16,14 +16,14 @@ services:
       - revproxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.varnish.rule=Host(`${MAIN_HOST}`) || Host(`${ALT_HOST}`) || ((Host(`${MAP_HOST_1}`) || Host(`${MAP_HOST_2}`) || Host(`${MAP_HOST_3}`) || Host(`${MAP_HOST_4}`)) && Method(`GET`) && PathPrefix(`/tiles`))"
-      - "traefik.http.routers.varnish.tls=true"
-      - "traefik.http.routers.varnish.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.varnish.middlewares=varnish"
-      - "traefik.http.services.varnish.loadbalancer.server.port=80"
-      - "traefik.http.middlewares.varnish.headers.contenttypenosniff=true"
-      - "traefik.http.middlewares.varnish.headers.custombrowserxssvalue=0"
-      - "traefik.http.middlewares.varnish.headers.framedeny=true"
+      - "traefik.http.routers.varnish_${PROJ_PREFIX}.rule=Host(`${MAIN_HOST}`) || Host(`${ALT_HOST}`) || ((Host(`${MAP_HOST_1}`) || Host(`${MAP_HOST_2}`) || Host(`${MAP_HOST_3}`) || Host(`${MAP_HOST_4}`)) && Method(`GET`) && PathPrefix(`/tiles`))"
+      - "traefik.http.routers.varnish_${PROJ_PREFIX}.tls=true"
+      - "traefik.http.routers.varnish_${PROJ_PREFIX}.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.varnish_${PROJ_PREFIX}.middlewares=varnish_${PROJ_PREFIX}"
+      - "traefik.http.services.varnish_${PROJ_PREFIX}.loadbalancer.server.port=80"
+      - "traefik.http.middlewares.varnish_${PROJ_PREFIX}.headers.contenttypenosniff=true"
+      - "traefik.http.middlewares.varnish_${PROJ_PREFIX}.headers.custombrowserxssvalue=0"
+      - "traefik.http.middlewares.varnish_${PROJ_PREFIX}.headers.framedeny=true"
       - "traefik.docker.network=${REVPROXY_NETWORK_NAME}"
 
 networks:
