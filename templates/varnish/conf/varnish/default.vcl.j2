@@ -20,7 +20,7 @@ sub vcl_backend_response {
      set beresp.grace = {{ leaflet_qgis_stack_varnish_grace }};
      set beresp.keep = {{ leaflet_qgis_stack_varnish_keep }};
      {% for k, v in leaflet_qgis_stack_varnish_set_headers.items() %}
-     unset beresp.http.{{ k }} = {{ v }};
+     unset beresp.http.{{ k }};
      set beresp.http.{{ k }} = {{ v }};
      {% endfor %}
 }
