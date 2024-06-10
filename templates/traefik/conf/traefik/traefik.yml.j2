@@ -62,7 +62,10 @@ entryPoints:
     address: ":8080"
 
 metrics:
-  prometheus: {}
+  prometheus:
+    addEntryPointsLabels: true
+    addRoutersLabels: true
+    addServicesLabels: true
 
 certificatesResolvers:
   letsencrypt:

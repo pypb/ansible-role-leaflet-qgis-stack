@@ -2,6 +2,7 @@
 leaflet_qgis_stack_traefik_deploy: false
 leaflet_qgis_stack_traefik_http_port: 80
 leaflet_qgis_stack_traefik_https_port: 443
+leaflet_qgis_stack_traefik_api_port: 127.0.0.1:8080
 leaflet_qgis_stack_traefik_tag: v2.10
 leaflet_qgis_stack_traefik_dir_mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
 leaflet_qgis_stack_traefik_file_mode: "{{ leaflet_qgis_stack_default_file_mode }}"
