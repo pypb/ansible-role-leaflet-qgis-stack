@@ -11,3 +11,4 @@ leaflet_qgis_stack_nginx_config_files: []
 leaflet_qgis_stack_nginx_config_templates:
   - src: nginx/conf/nginx/default.conf.j2
     dest: "{{ leaflet_qgis_stack_base_dir }}/nginx/conf/nginx/default.conf"
+leaflet_qgis_stack_nginx_expires: 5m
