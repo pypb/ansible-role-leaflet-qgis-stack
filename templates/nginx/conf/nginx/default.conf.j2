@@ -17,8 +17,9 @@ server {
     }
 
     gzip_static on;
+    gzip_proxied any;
     expires {{ leaflet_qgis_stack_nginx_expires }};
     add_header Cache-Control "public, no-transform";
-    add_header Vary Accept-Language;
+    add_header Vary "Accept-Language, Accept-Encoding";
     access_log off;
 }
