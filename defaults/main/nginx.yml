@@ -12,3 +12,15 @@ leaflet_qgis_stack_nginx_config_templates:
   - src: nginx/conf/nginx/default.conf.j2
     dest: "{{ leaflet_qgis_stack_base_dir }}/nginx/conf/nginx/default.conf"
 leaflet_qgis_stack_nginx_expires: 5m
+
+leaflet_qgis_stack_nginx_cdn_url: https://cdnjs.cloudflare.com
+leaflet_qgis_stack_nginx_csp_header: >-
+  default-src 'self' https://{{ leaflet_qgis_stack_main_host }};
+  font-src 'self' https://{{ leaflet_qgis_stack_main_host }} {{ leaflet_qgis_stack_nginx_cdn_url }};
+  img-src 'self' https://{{ leaflet_qgis_stack_main_host }} https://{{ leaflet_qgis_stack_map_host_1 }} https://{{ leaflet_qgis_stack_map_host_2 }} https://{{ leaflet_qgis_stack_map_host_3 }} https://{{ leaflet_qgis_stack_map_host_4 }} {{ leaflet_qgis_stack_nginx_cdn_url }} data:;
+  script-src 'self' https://{{ leaflet_qgis_stack_main_host }} {{ leaflet_qgis_stack_nginx_cdn_url }};
+  style-src 'self' 'unsafe-inline' https://{{ leaflet_qgis_stack_main_host }} {{ leaflet_qgis_stack_nginx_cdn_url }};
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  object-src 'none';

@@ -8,7 +8,7 @@ server {
     location / {
         root   /usr/share/nginx/html;
         index  index.html;
-        add_header Content-Security-Policy "default-src 'self' https://{{ leaflet_qgis_stack_main_host }}; font-src 'self' https://{{ leaflet_qgis_stack_main_host }} https://cdnjs.cloudflare.com; img-src 'self' https://{{ leaflet_qgis_stack_main_host }} https://{{ leaflet_qgis_stack_map_host_1 }} https://{{ leaflet_qgis_stack_map_host_2 }} https://{{ leaflet_qgis_stack_map_host_3 }} https://{{ leaflet_qgis_stack_map_host_4 }} data:; script-src 'self' https://{{ leaflet_qgis_stack_main_host }} https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://{{ leaflet_qgis_stack_main_host }} https://cdnjs.cloudflare.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none';";
+        add_header Content-Security-Policy "{{ leaflet_qgis_stack_nginx_csp_header }}";
     }
 
     error_page   500 502 503 504  /50x.html;
