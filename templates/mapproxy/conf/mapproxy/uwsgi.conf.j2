@@ -1,28 +1,30 @@
 ; {{ ansible_managed }}
 [uwsgi]
+; https://github.com/mapproxy/mapproxy/blob/master/docker/uwsgi.conf
+master = true
+chdir = /mapproxy
+pyargv = /mapproxy/config/mapproxy.yaml
+wsgi-file = /mapproxy/app.py
+pidfile=/tmp/mapproxy.pid
+socket = 0.0.0.0:8080
+processes = 2
+threads = 10
+chmod-socket = 777
+uid = mapproxy
+gid = mapproxy
 plugin = python3
+
 ; https://www.bloomberg.com/company/stories/configuring-uwsgi-production-deployment/
 strict = true
-master = true
 enable-threads = true
 vacuum = true
 single-interpreter = true
 die-on-term = true
 need-app = true
 
-chdir = /mapproxy
-pyargv = /mapproxy/config/mapproxy.yaml
-wsgi-file = /mapproxy/app.py
-pidfile=/tmp/mapproxy.pid
-
-socket = 0.0.0.0:8080
-chmod-socket = 777
 stats = 0.0.0.0:9191
 
 listen = 4096
-
-threads = {{ leaflet_qgis_stack_mapproxy_threads }}
-processes = {{ leaflet_qgis_stack_mapproxy_processes }}
 
 max-worker-lifetime = 14405
 worker-reload-mercy = 90
