@@ -13,7 +13,7 @@ leaflet_qgis_stack_nginx_config_templates:
     dest: "{{ leaflet_qgis_stack_base_dir }}/nginx/conf/nginx/default.conf"
 leaflet_qgis_stack_nginx_expires: 5m
 
-leaflet_qgis_stack_nginx_cdn_url: https://cdnjs.cloudflare.com
+leaflet_qgis_stack_nginx_cdn_url: https://cdnjs.cloudflare.com https://unpkg.com
 leaflet_qgis_stack_nginx_csp_header: >-
   default-src 'self' https://{{ leaflet_qgis_stack_main_host }};
   font-src 'self' https://{{ leaflet_qgis_stack_main_host }} {{ leaflet_qgis_stack_nginx_cdn_url }};

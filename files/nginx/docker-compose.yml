@@ -11,3 +11,4 @@ services:
     volumes:
       - ./conf/nginx:/etc/nginx/conf.d:ro
       - ${DATA_DIR}/leaflet/dist:/usr/share/nginx/html:ro
+      - ${DATA_DIR}/nginx/data:/usr/share/nginx/html/data:ro
