@@ -58,6 +58,9 @@ entryPoints:
         - "10.0.0.0/8"
         - "192.168.0.0/16"
         - "172.16.0.0/12"
+    transport:
+      respondingTimeouts:
+        readTimeout: {{ leaflet_qgis_stack_traefik_transport_readtimeout }}
   traefik:
     address: ":8080"
 
