@@ -8,6 +8,7 @@ leaflet_qgis_stack_varnish_traefik_network: "{{ leaflet_qgis_stack_docker_compos
 leaflet_qgis_stack_varnish_set_headers: {}
 leaflet_qgis_stack_varnish_map_host_regex: ^map.*\\.mydomain\\.local$
 leaflet_qgis_stack_varnish_referer_regex: ^https://.*\\.mydomain\\.local$
+leaflet_qgis_stack_varnish_path_regex: '^/tiles/[_a-zA-Z0-9]+/wm/([8-9]|1[0-6])/[0-9]+/[0-9]+.png$'
 leaflet_qgis_stack_varnish_size: 64M
 leaflet_qgis_stack_varnish_grace: 2m
 leaflet_qgis_stack_varnish_keep: 0s
