@@ -2,7 +2,7 @@
 # Ansible managed
 services:
   nginx:
-    image: nginxinc/nginx-unprivileged:${NGINX_TAG}
+    image: nginx/nginx-unprivileged:${NGINX_TAG}
     restart: unless-stopped
     environment:
       TZ: "${TZ}"

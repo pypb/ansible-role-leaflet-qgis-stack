@@ -2,7 +2,7 @@
 leaflet_qgis_stack_nginx_deploy: false
 leaflet_qgis_stack_nginx_ip: 127.0.0.1
 leaflet_qgis_stack_nginx_port: 8181
-leaflet_qgis_stack_nginx_tag: 1.25
+leaflet_qgis_stack_nginx_tag: 1.30.7
 leaflet_qgis_stack_nginx_dir_mode: "{{ leaflet_qgis_stack_default_dir_mode }}"
 leaflet_qgis_stack_nginx_file_mode: "{{ leaflet_qgis_stack_default_file_mode }}"
 
