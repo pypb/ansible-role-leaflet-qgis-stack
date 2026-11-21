@@ -5,7 +5,7 @@ services:
     image: ghcr.io/mapproxy/mapproxy/mapproxy:${MAPPROXY_TAG}
     restart: unless-stopped
     ports:
-      - "${MAPPROXY_IP}:${MAPPROXY_PORT}:80"
+      - "${MAPPROXY_IP}:${MAPPROXY_PORT}:9090"
     environment:
       TZ: "${TZ}"
     volumes:
